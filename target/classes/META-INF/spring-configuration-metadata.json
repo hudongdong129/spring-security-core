@@ -1,0 +1,17 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.hu.security.core.properties.SecurityProperties",
+      "name": "hu.security",
+      "type": "com.hu.security.core.properties.SecurityProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.hu.security.core.properties.SecurityProperties",
+      "name": "hu.security.browser",
+      "type": "com.hu.security.core.properties.BrowserProperties"
+    }
+  ]
+}
