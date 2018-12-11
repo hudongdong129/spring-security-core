@@ -12,6 +12,11 @@
       "sourceType": "com.hu.security.core.properties.SecurityProperties",
       "name": "hu.security.browser",
       "type": "com.hu.security.core.properties.BrowserProperties"
+    },
+    {
+      "sourceType": "com.hu.security.core.properties.SecurityProperties",
+      "name": "hu.security.code",
+      "type": "com.hu.security.core.properties.ValidateCodeProperties"
     }
   ]
 }
