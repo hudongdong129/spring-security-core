@@ -1,7 +1,7 @@
 /**
  * @author huDong
  */
-package com.hu.security.core.validate.code;
+package com.hu.security.core.validate.code.sms;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -16,6 +16,8 @@ import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;
 
 import com.hu.security.core.properties.SecurityProperties;
+import com.hu.security.core.validate.code.ValidateCode;
+import com.hu.security.core.validate.code.ValidateCodeGenerator;
 
 /**
  * @author Administrator
@@ -32,7 +34,7 @@ public class SmsCodeGenerator implements ValidateCodeGenerator {
 	 */
 	@Override
 	public ValidateCode createImageCode(ServletWebRequest request) {
-		String code = RandomStringUtils.random(securityProperties.getCode().getSms().getLength());
+		String code = RandomStringUtils.randomNumeric(securityProperties.getCode().getSms().getLength());
 		return new ValidateCode(code, securityProperties.getCode().getSms().getExpireIn());
 	}
 	

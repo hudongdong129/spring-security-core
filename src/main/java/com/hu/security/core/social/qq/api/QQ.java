@@ -1,6 +1,6 @@
-package com.hu.security.core.social.qq.api;
-
-public interface QQ {
-
-    QQUserInfo getUserInfo();
-}
+//package com.hu.security.core.social.qq.api;
+//
+//public interface QQ {
+//
+//    QQUserInfo getUserInfo();
+//}

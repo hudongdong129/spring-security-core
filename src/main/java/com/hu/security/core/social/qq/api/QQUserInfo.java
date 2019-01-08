@@ -1,4 +1,4 @@
-package com.hu.security.core.social.qq.api;
-
-public class QQUserInfo {
-}
+//package com.hu.security.core.social.qq.api;
+//
+//public class QQUserInfo {
+//}

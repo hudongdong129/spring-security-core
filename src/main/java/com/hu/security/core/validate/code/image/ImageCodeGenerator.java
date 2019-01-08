@@ -1,7 +1,7 @@
 /**
  * @author huDong
  */
-package com.hu.security.core.validate.code;
+package com.hu.security.core.validate.code.image;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;
 
 import com.hu.security.core.properties.SecurityProperties;
+import com.hu.security.core.validate.code.ValidateCodeGenerator;
 
 /**
  * @author Administrator
