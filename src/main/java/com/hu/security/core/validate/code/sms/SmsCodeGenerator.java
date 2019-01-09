@@ -40,13 +40,13 @@ public class SmsCodeGenerator implements ValidateCodeGenerator {
 	
 	
 
-	public SecurityProperties getSecurityProperties() {
-		return securityProperties;
-	}
-
-	public void setSecurityProperties(SecurityProperties securityProperties) {
-		this.securityProperties = securityProperties;
-	}
-	
+//	public SecurityProperties getSecurityProperties() {
+//		return securityProperties;
+//	}
+//
+//	public void setSecurityProperties(SecurityProperties securityProperties) {
+//		this.securityProperties = securityProperties;
+//	}
+//	
 	
 }

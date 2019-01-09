@@ -34,21 +34,6 @@ public class SecurityProperties {
 		this.browser = browser;
 	}
 	
-//	private BrowserProperties browser = new BrowserProperties();
-//
-//	private ValidateCodeProperties code = new ValidateCodeProperties();
-//	
-	
-//
-//	public ValidateCodeProperties getCode() {
-//		return code;
-//	}
-//
-//	public void setCode(ValidateCodeProperties code) {
-//		this.code = code;
-//	}
-//	
-	
 
 
 	

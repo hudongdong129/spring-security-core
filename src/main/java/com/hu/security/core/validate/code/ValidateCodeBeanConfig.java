@@ -25,7 +25,7 @@ public class ValidateCodeBeanConfig {
 	
 	
 	@Bean
-	@ConditionalOnMissingBean(name = "imageCodeGenerator")
+	@ConditionalOnMissingBean(name = "imageValidateCodeProcessor")
 	public ValidateCodeGenerator imageCodeGenerator() {
 		ImageCodeGenerator codeGenerator = new ImageCodeGenerator();
 		codeGenerator.setSecurityProperties(securityProperties);

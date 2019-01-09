@@ -41,14 +41,11 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 	@Autowired
 	private AuthenticationFailureHandler authenticationFailureHandler;
 	
-//	private SessionStrategy sessionStrategy = new HttpSessionSessionStrategy();
-//	
-//	private Set<String> urls = new HashSet<>();
-	
 	/**
 	 *  系统配置信息
 	 */
 	private SecurityProperties securityProperties;
+	
 	
 	/**
 	 * 验证请求url与配置的url是否匹配的工具类
@@ -63,11 +60,9 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 	 */
 	private Map<String, ValidateCodeType> urlMap = new HashMap<>();
 	
-	
 	@Override
 	public void afterPropertiesSet() throws ServletException {
 		super.afterPropertiesSet();
-		
 		urlMap.put(SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_FROM, ValidateCodeType.IMAGE);
 		addUrlToMap(securityProperties.getCode().getImage().getUrl(),ValidateCodeType.IMAGE);
 		
@@ -79,7 +74,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 //		}
 //		urls.add("/authentication/form");
 	}
-
+	
 	/**
 	 * 将系统中配置的需要校验验证码的url根据校验的类型放入map
 	 * @param url
@@ -93,7 +88,8 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 			}
 		}	
 	}
-
+	
+	
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
@@ -131,6 +127,36 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 //		
 //		filterChain.doFilter(request, response);
 	}
+	
+	
+	/**
+	 *  获取校验码的类型，如果当前请求不需要校验，则返回null
+	 * @param request
+	 * @return
+	 */
+	private ValidateCodeType getValidateCodeType(HttpServletRequest request) {
+		ValidateCodeType result = null;
+		if (!StringUtils.equalsIgnoreCase(request.getMethod(), "get")) {
+			Set<String> urls = urlMap.keySet();
+			for(String url : urls) {
+				if (pathMatcher.match(url, request.getRequestURI())) {
+					result = urlMap.get(url);			
+				}
+			}
+		}
+		return result;
+	}
+	
+	
+	
+	
+//	private SessionStrategy sessionStrategy = new HttpSessionSessionStrategy();
+//	
+//	private Set<String> urls = new HashSet<>();
+	
+
+	
+	
 
 //	private void validate(ServletWebRequest request) throws ServletRequestBindingException {
 //		ImageCode codeInSession = (ImageCode) sessionStrategy.getAttribute(request, ValidateCodeController.SESSION_KEY);
@@ -152,34 +178,17 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 //		sessionStrategy.removeAttribute(request, ValidateCodeController.SESSION_KEY);
 //	}
 
-	/**
-	 *  获取校验码的类型，如果当前请求不需要校验，则返回null
-	 * @param request
-	 * @return
-	 */
-	private ValidateCodeType getValidateCodeType(HttpServletRequest request) {
-		ValidateCodeType result = null;
-		if (!StringUtils.equalsIgnoreCase(request.getMethod(), "get")) {
-			Set<String> urls = urlMap.keySet();
-			for(String url : urls) {
-				if (pathMatcher.match(url, request.getRequestURI())) {
-					result = urlMap.get(url);			
-				}
-			}
-		}
-		return result;
-	}
-	
+
 	
 	
 
-	public AuthenticationFailureHandler getAuthenticationFailureHandler() {
-		return authenticationFailureHandler;
-	}
-
-	public void setAuthenticationFailureHandler(AuthenticationFailureHandler authenticationFailureHandler) {
-		this.authenticationFailureHandler = authenticationFailureHandler;
-	}
+//	public AuthenticationFailureHandler getAuthenticationFailureHandler() {
+//		return authenticationFailureHandler;
+//	}
+//
+//	public void setAuthenticationFailureHandler(AuthenticationFailureHandler authenticationFailureHandler) {
+//		this.authenticationFailureHandler = authenticationFailureHandler;
+//	}
 
 	
 

@@ -41,16 +41,19 @@ public class ValidateCodeController {
 	@Autowired
 	private ValidateCodeProcessorHolder validateCodeProcessorHolder;
 	
+	/**
+	 *  短信发送验证码
+	 */
 	@GetMapping(SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/{type}")
 	public void createCode(HttpServletRequest request,HttpServletResponse response, @PathVariable String type) throws Exception {
 		validateCodeProcessorHolder.findValidateCodeProcessor(type).create(new ServletWebRequest(request,response));
 		
 	}
 	
-//	public static final String SESSION_KEY = "SESSION_KEY_IMAGE_CODE";
+	public static final String SESSION_KEY = "SESSION_KEY_IMAGE_CODE";
 //
-//	/** 处理session */
-//	private SessionStrategy sessionStrategy = new HttpSessionSessionStrategy();
+	/** 处理session */
+	private SessionStrategy sessionStrategy = new HttpSessionSessionStrategy();
 //	
 //	
 //	@Autowired
